@@ -22,15 +22,15 @@ document.addEventListener("keyup", keyUpHandler);
 function keyDownHandler(e) {
     if (e.key === "ArrowUp") upPressed = true;
     if (e.key === "ArrowDown") downPressed = true;
-    if (e.key === "w" || e.key === "W") wPressed = true;
-    if (e.key === "s" || e.key === "S") sPressed = true;
+    if (e.key === "s" || e.key === "S") wPressed = true;
+    if (e.key === "w" || e.key === "W") sPressed = true;
 }
 
 function keyUpHandler(e) {
     if (e.key === "ArrowUp") upPressed = false;
     if (e.key === "ArrowDown") downPressed = false;
-    if (e.key === "w" || e.key === "W") wPressed = false;
-    if (e.key === "s" || e.key === "S") sPressed = false;
+    if (e.key === "s" || e.key === "S") wPressed = false;
+    if (e.key === "w" || e.key === "W") sPressed = false;
 }
 
 // Dessin de la balle
@@ -54,7 +54,7 @@ function drawPaddles() {
     // Raquette droite
     ctx.beginPath();
     ctx.rect(canvas.width - paddleWidth, rightPaddleY, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#DD9500";
+    ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
 }
