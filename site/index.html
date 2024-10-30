@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Monopage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation avec des onglets -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#jeu">Pong</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sections de contenu -->
+    <section id="accueil">
+        <h1>Bienvenue sur le site de Pong</h1>
+        <p>Un site monopage simple avec un jeu de Pong intégré.</p>
+    </section>
+
+    <section id="jeu">
+        <h2>Jeu de Pong</h2>
+        <canvas id="pongCanvas" width="600" height="400"></canvas>
+    </section>
+
+    <section id="contact">
+        <h2>Contactez-nous</h2>
+        <p>Pour toute demande, merci de remplir le formulaire ci-dessous.</p>
+        <form>
+            <input type="text" placeholder="Nom">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
