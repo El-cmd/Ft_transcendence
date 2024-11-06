@@ -151,18 +151,6 @@ function showLoginForm() {
     usernameInput.id = 'username';
     usernameInput.required = true;
 
-    // Label pour le mot de passe
-    const passwordLabel = document.createElement('label');
-    passwordLabel.textContent = 'Mot de passe :';
-    passwordLabel.htmlFor = 'password';
-
-    // Champ de saisie pour le mot de passe
-    const passwordInput = document.createElement('input');
-    passwordInput.type = 'password';
-    passwordInput.name = 'password';
-    passwordInput.id = 'password';
-    passwordInput.required = true;
-
 
      // Bouton de soumission
      const ft_Btn = document.createElement('button');
@@ -171,7 +159,7 @@ function showLoginForm() {
     // Bouton de soumission
     const submitBtn = document.createElement('button');
     submitBtn.type = 'submit';
-    submitBtn.textContent = 'Se connecter';
+    submitBtn.textContent = 'Se connecter en tant quInvité';
 
     // Bouton pour fermer le formulaire
     const closeBtn = document.createElement('button');
@@ -188,8 +176,6 @@ function showLoginForm() {
     // Assembler les éléments du formulaire
     form.appendChild(usernameLabel);
     form.appendChild(usernameInput);
-    form.appendChild(passwordLabel);
-    form.appendChild(passwordInput);
     form.appendChild(submitBtn);
     form.appendChild(ft_Btn);
     form.appendChild(closeBtn);
@@ -208,10 +194,8 @@ function showLoginForm() {
         e.preventDefault();
         // Récupérer les valeurs des champs
         const username = usernameInput.value;
-        const password = passwordInput.value;
         // Faire quelque chose avec les données (ex: authentification)
         console.log('Nom d\'utilisateur :', username);
-        console.log('Mot de passe :', password);
         // Supprimer le formulaire après soumission
         document.body.removeChild(formContainer);
         // Enlever l'effet de flou
