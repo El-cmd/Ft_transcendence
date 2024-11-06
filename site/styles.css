@@ -10,14 +10,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f4f4f4;
+    background-color: #000000;
 }
 
 /* Style de navigation */
-nav {
-    width: 100%;
-    background-color: #333;
-    padding: 10px;
+nav ul li{
+    font-size: 50px;
 }
 
 nav ul {
@@ -27,7 +25,7 @@ nav ul {
 
 nav ul li {
     list-style: none;
-    margin: 0 15px;
+    margin: 0 100px;
 }
 
 nav ul li a {
@@ -45,3 +43,49 @@ section {
 #jeu {
     margin-top: 20px;
 }
+
+p {
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+/* Style pour le conteneur du formulaire */
+#formContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Conserver le fond semi-transparent pour assombrir l'arrière-plan */
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Style pour le formulaire */
+#loginForm {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
+}
+
+/* Effet de flou sur le body lorsqu'on ajoute la classe 'blur' */
+.blur > *:not(#formContainer) {
+    filter: blur(5px);
+    pointer-events: none; /* Empêche l'interaction avec les éléments en arrière-plan */
+}
+
+
+
+
