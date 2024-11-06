@@ -18,9 +18,14 @@ nav ul li{
     font-size: 50px;
 }
 
+nav {
+    width: 100%; 
+}
+
 nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: center;      /* Aligne verticalement les éléments */
 }
 
 nav ul li {
@@ -73,7 +78,7 @@ h2 {
 
 /* Style pour le formulaire */
 #loginForm {
-    background-color: #fff;
+    background-color: #000000;
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
