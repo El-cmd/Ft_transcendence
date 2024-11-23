@@ -1,96 +1,67 @@
-/* Réinitialisation de base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+    font-family: 'Chau Philomene';
+    src: url('fonts/Chau_Philomene_One/ChauPhilomeneOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #000000;
-}
-
-/* Style de navigation */
-nav ul li{
-    font-size: 50px;
-}
-
-nav {
-    width: 100%; 
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-between; /* Espace entre les éléments */
-    align-items: center;      /* Aligne verticalement les éléments */
-}
-
-nav ul li {
-    list-style: none;
-    margin: 0 100px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Style des sections */
-section {
-    width: 80%;
-    padding: 40px;
-    text-align: center;
-}
-
-#jeu {
-    margin-top: 20px;
-}
-
-p {
-    color: white;
+#body {
+    background-color:#101728;
 }
 
 h1 {
-    color: white;
+    font-family: 'Chau Philomene';
+}
+
+p {
+    color:white;
 }
 
 h2 {
+    color:white;
+}
+
+
+/* Styles pour le menu latéral à droite */
+.offcanvas-end {
+    width: 250px; /* Ajustez la largeur selon vos préférences */
+    background-color: #101728; /* Couleur de fond sombre */
+    color: white;
+    border-left: 10px solid white; /* Bordure blanche sur le côté gauche */
+    border-top-left-radius: 30px; /* Arrondi en haut à gauche */
+    border-bottom-left-radius: 30px; /* Arrondi en bas à gauche */
+    min-height: 100vh; /* Assure que le menu prend toute la hauteur */
+}
+
+.offcanvas .offcanvas-header {
+    border-bottom: 1px solid white;
+}
+
+.offcanvas .offcanvas-body ul li a {
+    display: block;
+    padding: 15px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 18px; /* Taille du texte plus grande pour les liens */
+}
+
+.offcanvas .offcanvas-body ul li a:hover {
+    background-color: #495057;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.btn-outline-light {
+    border-color: white;
     color: white;
 }
 
-/* Style pour le conteneur du formulaire */
-#formContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Conserver le fond semi-transparent pour assombrir l'arrière-plan */
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+/* Cache le bouton de fermeture par défaut si vous le souhaitez */
+.offcanvas .btn-close {
+    display: none;
 }
 
-/* Style pour le formulaire */
-#loginForm {
-    background-color: #000000;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 1001;
+.modal-content {
+    background-color: #101728;
 }
-
-/* Effet de flou sur le body lorsqu'on ajoute la classe 'blur' */
-.blur > *:not(#formContainer) {
-    filter: blur(5px);
-    pointer-events: none; /* Empêche l'interaction avec les éléments en arrière-plan */
-}
-
-
-
 
