@@ -1,0 +1,15 @@
+<!-- # listings/templates/listings/hello.html -->
+<html>
+    <head><title>Merchex</title></head>
+    <body>
+        <h1>Hello Django !</h1>
+        <p>Mes groupes préférés sont :</p>
+        <!-- TODO : liste des groupes -->
+         <ul>
+            <p>list de film :</p>
+            {% for title in titles %}
+            <li>{{ title.name|upper }}</li>
+            {% endfor %}
+         </ul>
+    </body>
+</html>
