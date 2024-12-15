@@ -6,9 +6,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def hello(request):
+def band_list(request):
     bands = Band.objects.all()
-    return render(request, 'listings/hello.html', context={'bands': bands})
+    return render(request, 'listings/band_list.html', context={'bands': bands})
 
 def about(request):
     return HttpResponse('<h1>About us</h1> <p>Nous adorons le shit</p>')
@@ -20,3 +20,8 @@ def listings(request):
 
 def contact(request):
     return HttpResponse('<h1>Contact us</h1> <p>email:</p>')
+
+def band_detail(request, id):
+    band = Band.objects.get(id=id)
+    return render(request, 'listings/band_detail.html', {'id': id})
+

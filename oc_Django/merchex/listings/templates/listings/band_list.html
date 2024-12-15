@@ -7,7 +7,7 @@
         <!-- TODO : liste des groupes -->
          <ul>
             {% for band in bands %}
-            <li>{{ band.name|upper }}</li>
+            <li>{{ band.name|upper }}<br>{{ band.genre }}<br>{{ band.year_creation }}</li>
             {% endfor %}
          </ul>
     </body>
