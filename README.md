@@ -28,7 +28,7 @@ docker build : Crée une image à partir du Dockerfile.
 Pour exécuter l'application dans un conteneur Docker, lancez la commande suivante :
 
 ```bash
-docker run -d -p 8000:80 frontend-app
+docker run -d -p 8000:8000 frontend-app
 ```
 
 docker run : Lance un nouveau conteneur basé sur une image Docker.
