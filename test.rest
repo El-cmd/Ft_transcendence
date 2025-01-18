@@ -5,7 +5,7 @@ Content-Type: application/json
 
 ###
 
-POST http://127.0.0.1:8000/signup/
+POST http://127.0.0.1:8001/signup/
 Content-Type: application/json
 
 { "username": "zack2", "password": "pass123", "email": "new@gmail.com" }
@@ -20,7 +20,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 ###
 
 ### OAuth2 Login
-GET http://localhost:8000/oauth2/login/
+GET http://localhost:8001/oauth2/login/
 
 
 ### OAuth2 Callback
