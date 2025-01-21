@@ -16,4 +16,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8001
 
 # Définir les variables d'environnement pour la base de données PostgreSQL
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8001 auth.wsgi:application"]
