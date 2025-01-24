@@ -14,7 +14,7 @@ Content-Type: application/json
  
 GET http://127.0.0.1:8001/test_token/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3NjI0MjYzLCJpYXQiOjE3Mzc2MjM5NjMsImp0aSI6Ijk4ZjEzY2YzNjUwMzQwMzJhNTJjNmFlNmE5MDEyNTcyIiwidXNlcl9pZCI6Mn0.OEsZ8_xGF-3Fgf5pEW1OGKmUkN_xjn6u36nzbsbK_Tw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3NzQ0NDEwLCJpYXQiOjE3Mzc3NDQxMTAsImp0aSI6ImNiOTA0YThjZDI3NDRhMjA4ZTQ4YjJlM2M3ZjhjNjM4IiwidXNlcl9pZCI6Mn0.riTgcs4BcBeToqMYzUYF7Zc1dhkTop3kPpYs2-w7o6k
 
 
 ###
@@ -24,4 +24,4 @@ GET http://localhost:8001/oauth2/login/
 
 
 ### OAuth2 Callback
-GET http://localhost:8001/oauth2/callback/?code=2caad01cdadacb7e55c9dfef5d106c1d65135bcbac4169fedc4f60b11186cc2d
+GET http://localhost:8001/oauth2/callback/?code=f29f22f3d43b86a301bf5f85641c85017c9d77c8fc03a414a55866875594c45a

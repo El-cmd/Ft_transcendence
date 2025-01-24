@@ -101,6 +101,8 @@ def oauth2_callback(request):
     user_info = user_info_response.json()
     username = user_info.get('login')
     email = user_info.get('email')
+    profile_picture = user_info.get('image', {}).get('link')
+
 
     # Vérifie si l'utilisateur existe déjà ou crée-le
     user, created = User.objects.get_or_create(username=username, defaults={'email': email})
@@ -109,7 +111,8 @@ def oauth2_callback(request):
     refresh = RefreshToken.for_user(user)
 
     # Passe "is_42_user=True" au contexte du serializer
-    serializer = UserSerializer(user, context={'is_42_user': True})
+    serializer = UserSerializer(user, context={'is_42_user': True, 'profile_picture': profile_picture})
+    serializer.save()
     return Response({
         "refresh": str(refresh),
         "access": str(refresh.access_token),
