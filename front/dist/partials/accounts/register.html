@@ -1,0 +1,42 @@
+<head>
+    <link rel="stylesheet" href="style/register.css">
+</head>
+
+<section id="register-modal" class="modal fade text-white" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Inscription</h5>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" id="register-error" style="display: none;"></div>
+                <p>Déjà inscrit ? <a href="#/login">Se connecter</a></p>
+                <form id="register-form" method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Pseudo:</label>
+                        <input type="text" id="username" name="username" class="form-control" maxlength="20" required>
+                        <div id="username-warning" class="form-text text-danger" style="display: none;"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" maxlength="20" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe:</label>
+                        <input type="password" id="password" name="password" class="form-control" maxlength="20" required>
+                        <div id="password-warning" class="form-text text-danger" style="display: none;"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="repeated_password" class="form-label">Mot de passe a nouveau:</label>
+                        <input type="password" id="repeated_password" name="repeated_password" class="form-control" maxlength="20" required>
+                        <div id="password-match-warning" class="form-text text-danger" style="display: none;"></div>
+                    </div>
+                    <button type="submit" class="btn btn-tron">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+</section>
+
+    </div>
+</section>

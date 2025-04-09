@@ -1,0 +1,25 @@
+#rankingTableContainer {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+#rankingTable {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    font-family: 'Audiowide';
+}
+
+#rankingTable th, #rankingTable td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: center;
+}
+
+#rankingTable th {
+    background-color: #333;
+}
+
+#rankingTable td {
+    background-color: #222;
+}

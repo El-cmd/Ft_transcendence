@@ -1,0 +1,636 @@
+/* Centrage parfait */
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; /*Ne recouvre plus tout l'écran */
+    width: auto;
+    position: absolute; /*Évite que cela bloque tout l'écran */
+    top: 30%; /*Ajuste la position pour ne pas couvrir la sidebar */
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none; /*Permet les clics en dehors */
+    user-select: none;
+}
+
+/* /////////////FENETRE NOIRE///////////// */
+.game-selection {
+    position: flex; 
+    width: 750px;
+    height: 500px;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 50px 15px rgba(0, 255, 255, 1),
+                0 0 100px 30px rgba(0, 255, 255, 0.6);
+	z-index: 10; 
+	pointer-events: auto; /* Les clics fonctionnent ici */
+    user-select: none;
+}
+
+.game-selection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(3, 3, 3); 
+    opacity: 0.2; 
+    border-radius: 20px; 
+    z-index: -1; /*Place ce fond derrière le texte et les boutons */
+    user-select: none;
+}
+
+
+/* S'assurer que le contenu reste au-dessus */
+.game-selection h1 {
+    color: cyan;
+    font-size: 2em;
+    margin-top: -30px !important;  /* Remonte le titre */
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Audiowide', cursive;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    user-select: none;
+}
+
+/* Uniformiser tous les boutons de la game-selection */
+.game-selection button {
+    width: 130px;  
+    height: 130px; 
+    padding: 0;
+    margin: 0;  /* Supprimer les marges */
+    font-size: 20px;
+    font-family: 'Audiowide', cursive;
+    background: linear-gradient(to top, rgb(0, 200, 200), rgb(0, 255, 255));
+    border: 3px solid rgba(0, 255, 255, 0.9);
+    color: rgb(8, 8, 8);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    pointer-events: all;
+    box-shadow: 0 5px rgba(0, 255, 255, 0.8);
+    transform: translateY(0);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    user-select: none;
+    justify-self: center;  /* Centrer dans la grille */
+    align-self: center;    /* Centrer dans la grille */
+}
+
+/* Effet "appuyé" sur le bouton */
+.game-selection button:active { 
+    transform: translateY(5px); /* Bouton enfoncé */
+    box-shadow: 0 2px rgba(0, 255, 255, 0.6); /* Réduction de l'ombre */
+    user-select: none;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 0px; /*Espacement entre les boutons */
+    user-select: none;
+}
+.game-selection button:hover {
+    background: rgba(0, 255, 255); /* Élargit l'effet lumineux */
+    box-shadow: 0 0 25px 8px rgba(0, 255, 255, 0.9); /* Élargit l'effet lumineux */
+    transform: scale(1.05); /* Légère augmentation de la taille pour plus d'impact */
+    transition: all 0.3s ease-in-out; /* Rend l'effet plus fluide */
+    user-select: none;
+}
+
+.menu-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: cyan;
+    font-family: 'Audiowide', cursive;
+    box-shadow: 0 0 15px cyan;
+    user-select: none;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Ajuste la vidéo pour couvrir tout l'écran */
+    object-fit: cover; /* Ajuste la vidéo pour couvrir tout l'écran */
+    z-index: -1; /* Place la vidéo derrière tout le contenu */
+}
+
+.menu-container button {
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    background: black;
+    color: cyan;
+    border: 2px solid cyan;
+    cursor: pointer;
+    transition: 0.3s;;
+    user-select: none;
+}
+.menu-container button:hover {
+    background: cyan;
+    color: black;
+    user-select: none;
+}
+
+/* Style spécifique pour le menu online */
+.game-selection.online {
+    height: auto;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column; /* Permet de commencer en haut */
+    justify-content: flex-start; /* Permet de commencer en haut */
+    padding-top: 20px; /* Espace en haut */
+}
+
+/* /////////////TITRE MODE ONLINE///////////// */
+.game-selection.online h1 {
+    margin-bottom: 30px;
+    transform: translateY(0);
+}
+.game-selection.online .button-container {
+    display: grid;
+    grid-template-rows: auto auto; /* Deux rangées */
+    grid-template-columns: repeat(3, 1fr); /* Trois colonnes égales */
+    gap: 20px 30px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 50px !important;  /* Descend uniquement les boutons de la fenêtre online */
+}
+
+/* Style pour les 3 premiers boutons (rangée du haut) */
+.game-selection.online .button-container button:nth-child(-n+3) {
+    grid-row: 1;
+}
+
+/* Style pour les 2 derniers boutons (rangée du bas) */
+.game-selection.online .button-container button:nth-child(4) {
+    grid-row: 2;
+    grid-column: 1 / 2;  /* Première colonne */
+    justify-self: end;   /* Aligne à droite */
+    margin-right: 10px;  /* Petit espace à droite */
+}
+
+.game-selection.online .button-container button:nth-child(5) {
+    grid-row: 2;
+    grid-column: 2 / 3;  /* Deuxième colonne */
+    justify-self: start;  /* Aligne à gauche */
+    margin-left: 10px;   /* Petit espace à gauche */
+}
+
+/* Centre l'ensemble des boutons du bas */
+.game-selection.online .button-container {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 30px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Conteneur spécifique pour les boutons du bas */
+.game-selection.online .button-container button:nth-child(n+4) {
+    margin-top: 30px;
+    transform: translateX(60%);  /* Déplace les boutons vers le centre */
+}
+
+/* Adaptation mobile */
+@media screen and (max-width: 768px) {
+    .game-selection.online .button-container {
+        grid-template-areas: 
+            "top"    /* Une seule colonne sur mobile */
+            "bottom";
+        gap: 15px;
+        width: 90%;
+    }
+}
+
+/*/////////////BOUTONS ONLINE MODE/////////////*/
+.game-selection.online button {
+    width: 170px;
+    height: 170px;
+    font-size: 28px;
+    margin: 0;
+    justify-self: center;
+}
+
+/* Adapter la mise en page des boutons en mode ready/waiting */
+.game-selection.waiting .button-container,
+.game-selection.ready .button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 30px; /* Même espacement que le mode online */
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.game-selection.waiting button,
+.game-selection.ready button {
+    width: 170px;
+    height: 170px;
+    font-size: 28px;
+    margin: 0;
+    justify-self: center;
+}
+
+/* Garder la même adaptation mobile que le mode online */
+@media screen and (max-width: 768px) {
+    .game-selection.waiting .button-container,
+    .game-selection.ready .button-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        width: 90%;
+    }
+    
+    .game-selection.waiting button,
+    .game-selection.ready button {
+        width: 130px;
+        height: 70px;
+    }
+}
+
+.game-selection button {
+    width: 150px;
+    height: 150px;
+    margin: 0;  /* Supprimer les marges */
+    font-size: 20px;
+    justify-self: center;  /* Centrer dans la grille */
+    align-self: center;    /* Centrer dans la grille */
+}
+
+/* Adaptation pour mobile */
+@media screen and (max-width: 768px) {
+    .game-selection.waiting .button-container,
+    .game-selection.ready .button-container {
+        grid-template-columns: repeat(2, 1fr);  /* Maintenir 2 colonnes */
+        gap: 10px;
+        width: 90%;
+    }
+
+    .game-selection button {
+        width: 120px;
+        height: 70px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-selection.waiting .button-container,
+    .game-selection.ready .button-container {
+        grid-template-columns: 1fr;  /* Une seule colonne pour très petits écrans */
+    }
+
+    .game-selection button {
+        width: 100px;
+        height: 60px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .game-selection.online {
+        padding-top: 10px;
+    }
+    .game-selection.online .button-container {
+        grid-template-columns: 1fr;
+        gap: 15px;;
+        width: 90%;
+    }
+    .game-selection.online button {
+        width: 130px;
+        height: 70px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .game-selection {
+        width: 80vw; /* La boîte s'ajuste mieux */
+        max-width: 1000px;
+        padding: 30px;
+    }
+    .game-selection h1 {
+        margin-top: 60px;
+        font-size: 1.8em;
+		margin-bottom: 20px;
+        user-select: none;
+    }
+    /* Boutons adaptatifs */
+    .game-selection button {
+        width: 120px;  /* Réduit pour mobile */
+        height: 70px;
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    .button-container { /* Empile les boutons sur mobile */
+        flex-direction: column; /* Empile les boutons sur mobile */
+        align-items: center;
+        gap: 10px;
+    }
+    .game-selection.waiting .button-container,
+    .game-selection.online .button-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-selection h1 {
+        margin-top: 40px;
+        font-size: 1.5em;
+    }
+    .game-selection button {
+        width: 100px; 
+        height: 60px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .game-selection.waiting .button-container,
+    .game-selection.ready .button-container {
+        width: 300px; 
+        gap: 15px;
+    }
+}
+
+/* /////////////BOUTONS PRINCIPAUX ONLINE ET LOCAL///////////// */
+.game-selection .main-menu-button {
+    width: 200px;
+    height: 200px; 
+    font-size: 32px; 
+    margin: 20px; 
+}
+
+
+@media screen and (max-width: 768px) {
+    .game-selection .main-menu-button {
+        width: 150px;
+        height: 150px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-selection .main-menu-button {
+        width: 120px;
+        height: 120px;
+        font-size: 20px;
+    }
+}
+
+/* ///////////////////STYLE PHRASE MENU PRINCIPAL/////////////////// */
+.game-selection:not(.online):not(.waiting):not(.ready) h1 {
+    color: cyan;
+    font-size: 2em;
+    margin-bottom: 50px;
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.8),
+        0 0 20px rgba(0, 255, 255, 0.5),
+        0 0 30px rgba(0, 255, 255, 0.3);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Animation de brillance pour le titre */
+@keyframes glow {
+    from {
+        text-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.8),
+            0 0 20px rgba(0, 255, 255, 0.5),
+            0 0 30px rgba(0, 255, 255, 0.3);
+    }
+    to {
+        text-shadow: 
+            0 0 20px rgba(0, 255, 255, 0.8),
+            0 0 30px rgba(0, 255, 255, 0.5),
+            0 0 40px rgba(0, 255, 255, 0.3);
+    }
+}
+
+/* Adaptation mobile pour le titre principal */
+@media screen and (max-width: 768px) {
+    .game-selection:not(.online):not(.waiting):not(.ready) h1 {
+        font-size: 2.5em;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-selection:not(.online):not(.waiting):not(.ready) h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+}
+
+/* /////////////BOUTONS MODE LOCAL///////////// */
+.game-selection:not(.online):not(.waiting):not(.ready) .button-container button {
+    width: 180px;
+    height: 180px;
+    font-size: 30px;
+    margin: 15px;
+    background: linear-gradient(to top, rgb(0, 180, 180), rgb(0, 235, 235));
+    border: 4px solid rgba(0, 255, 255, 0.9);
+    box-shadow: 0 6px rgba(0, 255, 255, 0.8);
+}
+
+/* Style spécifique pour le conteneur des boutons d'event (ne doit pas affecter le mode local) */
+.game-selection.event .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    width: 70%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: -120px !important;
+    padding-top: 0;
+}
+
+/* Réinitialiser le style du conteneur pour le mode local */
+.game-selection:not(.online):not(.waiting):not(.ready) .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px !important;
+}
+
+/* Adaptation mobile pour les boutons locaux */
+@media screen and (max-width: 768px) {
+    .game-selection:not(.online):not(.waiting):not(.ready) .button-container button {
+        width: 140px;
+        height: 140px;
+        font-size: 24px;
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-selection:not(.online):not(.waiting):not(.ready) .button-container button {
+        width: 110px;
+        height: 110px;
+        font-size: 20px;
+        margin: 8px;
+    }
+}
+
+/* Style pour les boutons en mode waiting/ready (après avoir cliqué sur Squad) */
+.game-selection.waiting button,
+.game-selection.ready button {
+    width: 170px;
+    height: 170px;
+    font-size: 28px;
+    margin: 0;
+    justify-self: center;
+}
+
+/* Adaptation mobile */
+@media screen and (max-width: 768px) {
+    .game-selection.waiting button,
+    .game-selection.ready button {
+        width: 120px;
+        height: 60px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-selection.waiting button,
+    .game-selection.ready button {
+        width: 100px;
+        height: 50px;
+        font-size: 16px;
+    }
+}
+
+/* Style spécifique pour les boutons d'event (unjoin, game page, ready, invite) */
+.game-selection:not(.online):not(.local) button {
+    width: 140px;
+    height: 70px;
+    font-size: 20px;
+    margin: 15px;
+    background: linear-gradient(to top, rgb(0, 140, 140), rgb(0, 195, 195));
+    border: 3px solid rgba(0, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+/* Organisation en grille pour les boutons d'event */
+.game-selection:not(.online):not(.local) .button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* Adaptation mobile */
+@media screen and (max-width: 768px) {
+    .game-selection:not(.online):not(.local) button {
+        width: 120px;
+        height: 60px;
+        font-size: 18px;
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-selection:not(.online):not(.local) button {
+        width: 100px;
+        height: 50px;
+        font-size: 16px;
+        margin: 8px;
+    }
+    
+    .game-selection:not(.online):not(.local) .button-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+/* Style spécifique pour les boutons d'event */
+.game-selection button.event-button {
+    width: 160px !important;
+    height: 160px !important;
+    font-size: 22px !important;
+    margin: 5px !important;
+    background: linear-gradient(to top, rgb(0, 140, 140), rgb(0, 195, 195));
+    border: 2px solid rgba(0, 255, 255, 0.8);
+    border-radius: 8px;
+}
+
+/* Organisation en ligne pour les boutons d'event */
+.game-selection.online .button-container {
+    display: grid;
+    margin-top: 50px !important;  /* Pour les boutons du menu online */
+}
+
+/* Style spécifique pour le conteneur des boutons d'event */
+.game-selection:not(.online) .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    width: 70%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: -120px !important;  /* Remonte encore plus les boutons d'event */
+    padding-top: 0;
+}
+
+/* Garde le style existant pour les boutons d'event */
+.game-selection:not(.online) .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    width: 70%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: -40px !important;
+    padding-top: 0;
+}
+
+/* Titre spécifique pour le menu online */
+.game-selection.online h1 {
+    margin-top: 30px !important;  /* Garde le titre en bas */
+    margin-bottom: 50px;
+}
+
+/* Garde le style existant pour le titre des autres fenêtres */
+.game-selection:not(.online) h1 {
+    margin-top: -30px !important;  /* Garde le titre remonté pour les autres fenêtres */
+    margin-bottom: 30px;
+}
+

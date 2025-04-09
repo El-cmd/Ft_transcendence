@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Pong Game TRON Style</title>
+  <link rel="stylesheet" href="/style/pong.css">
+
+</head>
+<body>
+  <!-- Écran de chargement -->
+  <div id="loading-screen">
+      <div class="spinner"></div>
+      <p class="loading-text">CHARGEMENT...</p>
+  </div>
+
+  <!-- Vidéo de fond -->
+  <video autoplay loop muted playsinline class="video-background" id="bg-video">
+      <source src="https://cdn.pixabay.com/video/2024/08/18/227152_large.mp4" type="video/mp4">
+  </video>
+
+  <!-- ScoreBoard : Joueur 1 à gauche, Joueur 2 à droite -->
+  <div id="scoreBoard">
+      <div class="score-left">
+        <div class="score-content-left">
+          <span class="player-name">Pilote 1:</span>
+          <span id="player1-score" class="player-score">0</span>
+        </div>
+      </div>
+      <div class="score-right">
+        <div class="score-content-right">
+          <span class="player-name">Pilote 2:</span>
+          <span id="player2-score" class="player-score">0</span>
+        </div>
+      </div>
+  </div>
+
+  <div id="winnerMessage"></div>
+
+  <section id="pong-game">
+      <canvas id="pongCanvas"></canvas>
+      <script type="module" src="pong.js"></script>
+  </section>
+</body>
+</html>

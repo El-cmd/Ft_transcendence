@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title data-i18n="pong-game-title">Pong Game TRON Style</title>
+  <link rel="stylesheet" href="/style/pong2.css">
+</head>
+<body>
+  <!-- Écran de chargement -->
+  <div id="loading-screen">
+      <div class="spinner"></div>
+      <p class="loading-text" data-i18n="loading-text">CHARGEMENT...</p>
+  </div>
+
+  <!-- Vidéo de fond -->
+  <video autoplay loop muted playsinline class="local-background" id="bg-video">
+      <source src="https://videos.pexels.com/video-files/30756137/13156791_1920_1080_30fps.mp4" type="video/mp4">
+  </video>
+
+  <!-- ScoreBoard : Joueur 1 à gauche, Joueur 2 à droite -->
+  <div id="scoreBoard">
+      <div class="score-left">
+        <div class="score-content-left">
+          <!-- <span class="player-name" data-i18n="player1-label">Pilote 1:</span> -->
+          <span id="player1-score" class="player-score"></span>
+        </div>
+      </div>
+      <div class="score-right">
+        <div class="score-content-right">
+          <!-- <span class="player-name" data-i18n="player2-label">Pilote 2:</span> -->
+          <span id="player2-score" class="player-score"></span>
+        </div>
+      </div>
+  </div>
+
+  <div id="winnerMessage"></div>
+
+  <section id="pong-game2">
+      <canvas id="pongCanvas"></canvas>
+      <script type="module" src="pong2.js"></script>
+  </section>
+</body>
+</html>

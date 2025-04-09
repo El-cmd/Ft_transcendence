@@ -1,0 +1,54 @@
+<head>
+    <link rel="stylesheet" href="style/register.css">
+</head>
+
+
+<div class="modal fade" id="createEventModal" tabindex="-1" aria-labelledby="createEventModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createEventModalLabel">Create your event!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="eventCreateForm">
+                    <div class="mb-3">
+                        <label for="eventType" class="form-label">Type:</label>
+                        <select id="eventType" name="eventType" class="form-select">
+                            <option value="game">Game</option>
+                            <option value="tournament">Tournament</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventName" class="form-label">Name:</label>
+                        <input type="text" id="eventName" name="eventName" class="form-control" value="Default Name" maxlength="20" required>
+                        <div id="eventName-warning" class="form-text text-danger" style="display: none;"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventDescription" class="form-label">Description:</label>
+                        <textarea id="eventDescription" name="eventDescription" class="form-control" maxlength="200" required>Default Description</textarea>
+                        <div id="eventDescription-warning" class="form-text text-danger" style="display: none;"></div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" id="eventVisibility" name="eventVisibility" class="form-check-input">
+                        <label for="eventVisibility" class="form-check-label">Public</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="maxPlayers" class="form-label">Max Players:</label>
+                        <select id="maxPlayers" name="maxPlayers" class="form-select">
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="scoreToWin" class="form-label">Score to Win:</label>
+                        <input type="number" id="scoreToWin" name="scoreToWin" class="form-control" min="1" value="5" maxlength="2" required>
+                        <div id="scoreToWin-warning" class="form-text text-danger" style="display: none;"></div>
+                    </div>
+                    <button type="submit" class="btn btn-tron" id="createButton">Create Event</button>
+                    <button type="button" class="btn btn-tron-secondary mt-3" data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

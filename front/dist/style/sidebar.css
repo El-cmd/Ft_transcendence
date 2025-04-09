@@ -1,0 +1,56 @@
+/* 📌 Style général de la sidebar */
+#sideMenuRight {
+    background: rgba(10, 10, 10, 0.95); /* Fond sombre avec légère transparence */
+    border-left: 3px solid rgba(0, 255, 255, 0.7); /* Bordure lumineuse */
+    box-shadow: -10px 0 30px rgba(0, 255, 255, 0.8); /* Effet lumineux */
+    backdrop-filter: blur(10px); /* Effet de flou pour un rendu futuriste */
+    color: cyan;
+    user-select: none;
+}
+
+/* 📌 Style du titre */
+#sideMenuRight .offcanvas-title {
+    font-family: 'Audiowide', cursive;
+    font-size: 22px;
+    color: cyan;
+    text-shadow: 0 0 10px cyan, 0 0 20px rgba(0, 255, 255, 0.7);
+    user-select: none;
+}
+
+/* 📌 Style du bouton de fermeture */
+#sideMenuRight .btn-close {
+    filter: brightness(1.2);
+    opacity: 0.;
+    transition: all 0.3s ease-in-out;
+}
+
+#sideMenuRight .btn-close:hover {
+    filter: brightness(2);
+    opacity: 1;
+}
+
+/* 📌 Liste des liens */
+#sideMenuRight ul {
+    padding: 0;
+}
+
+#sideMenuRight li {
+    margin: 15px 0;
+}
+
+#sideMenuRight a {
+    display: block;
+    padding: 12px;
+    font-size: 18px;
+    font-family: 'Audiowide', cursive;
+    color: rgba(0, 255, 255, 0.8);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+#sideMenuRight a:hover {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    color: cyan;
+}

@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="style/login.css">
+</head>
+
+<section id="login-modal" class="modal fade text-white" tabindex="-1">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <!-- Sélecteur de langue intégré -->
+		  <!-- <select id="language-selector" class="form-select form-select-sm">
+			<option value="fr" selected>Fr</option>
+			<option value="en">En</option>
+			<option value="sp">Es</option>
+			<option value="ch">中文</option>
+		  </select> -->
+		  <h5 class="modal-title" data-i18n="login-title">Connexion</h5>
+		</div>
+		<div class="modal-body">
+		  <div class="alert alert-danger" id="login-error" style="display: none;"></div>
+		  <p>Pas encore inscrit ? <a href="#/register">S'inscrire</a></p>
+		  <form id="login-form">
+			<div class="mb-3">
+			  <label for="username" class="form-label" data-i18n="label-username">Pseudo:</label>
+			  <input type="text" id="username" name="username" class="form-control" maxlength="20" required>
+			</div>
+			<div class="mb-3">
+			  <label for="password" class="form-label" data-i18n="label-password">Mot de passe:</label>
+			  <input type="password" id="password" name="password" class="form-control" maxlength="20" required>
+			</div>
+			<button type="submit" class="btn btn-tron" data-i18n="login-button">Se connecter</button>
+		  </form>
+		  <button class="btn btn-tron-secondary mt-3" id="btn-42">
+			<span data-i18n="btn-42-text">Connectez-vous avec</span>
+			<img src="img/42_Logo(2).svg" alt="connexion42" height="35px" width="35px">
+		  </button>
+		</div>
+	  </div>
+	</div>
+  </section>
+  

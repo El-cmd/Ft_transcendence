@@ -1,0 +1,164 @@
+services:
+
+  https_proxy:
+    build:
+      context: ./https_proxy
+      dockerfile: Dockerfile
+    container_name: https_proxy
+    ports:
+      - "8443:443"
+      - "8080:80"
+    volumes:
+      - ./https_proxy/certs:/etc/nginx/certs
+    networks:
+      - app-network
+    depends_on:
+      - api_gateway
+    restart: unless-stopped
+
+  api_gateway:
+    image: api_gateway
+    container_name: api_gateway
+    build:
+      context: ./api_gateway
+      dockerfile: Dockerfile
+    volumes:
+      - ./api_gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./user_managment/staticfiles:/usr/share/nginx/html:ro
+      - ./user_managment/media:/var/www/media:ro
+    networks:
+      - app-network
+    depends_on:
+      user_managment:
+        condition: service_healthy
+      event_managment:
+        condition: service_healthy
+      chat_managment:
+        condition: service_healthy
+      frontend:
+        condition: service_healthy
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 20
+    restart: unless-stopped
+    
+
+  frontend:
+    image: frontend
+    container_name: frontend
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    volumes:
+      - ./front/dist:/usr/share/nginx/html
+    networks:
+      - app-network
+    depends_on:
+      user_managment:
+        condition: service_healthy
+      event_managment:
+        condition: service_healthy
+      chat_managment:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+    restart: unless-stopped
+
+  user_managment:
+    image: user_managment
+    container_name: user_managment
+    build:
+      context: ./user_managment
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./user_managment/srcs/accounts:/app/srcs/accounts
+      - ./user_managment/srcs/user_managment:/app/srcs/user_managment
+      - ./user_managment/media:/app/media
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/api/accounts/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+    restart: unless-stopped
+
+  event_managment:
+    image: event_managment
+    container_name: event_managment
+    build:
+      context: ./event_managment
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./event_managment/srcs/events:/app/srcs/events
+      - ./event_managment/srcs/event_managment:/app/srcs/event_managment
+      - ./event_managment/srcs/games:/app/srcs/games
+      - ./event_managment/srcs/tournaments:/app/srcs/tournaments
+    networks:
+      - app-network
+    depends_on:
+      user_managment:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/api/events/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+    restart: unless-stopped
+
+
+  chat_managment:
+    image: chat_managment
+    container_name: chat_managment
+    build:
+      context: ./chat_managment
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./chat_managment/srcs/chat:/app/srcs/chat
+      - ./chat_managment/srcs/chat_managment:/app/srcs/chat_managment
+    networks:
+      - app-network
+    depends_on:
+      user_managment:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/api/chat/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+    restart: unless-stopped
+
+  redis_cache:
+    image: redis:latest # 7.2.4-bookworm ?
+    container_name: redis_cache
+    # ports:
+    #   - "6379:6379"
+    volumes:
+      - ./redis_cache:/data
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+# volumes:
+#   redis_cache:
+#     driver: local
+
+networks:
+  app-network:
+    driver: bridge

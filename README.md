@@ -1,54 +1,57 @@
-# Ft_transcendence
-# Frontend Application with Docker
+# 🎮 Projet de Jeu Multijoueur en Architecture Microservices
 
-Ce projet contient un conteneur Docker configuré pour servir une application frontend. Le conteneur utilise une image Nginx et expose le frontend sur un port spécifié.
+## 🎬 Démonstration
 
----
+![Démonstration du projet](demo.gif)
 
-## **Prérequis**
-Avant de commencer, assurez-vous d'avoir installé :
-- [Docker](https://www.docker.com/) (version 20.x ou plus récente).
+## 🏗️ Architecture technique
 
----
+Ce projet est construit sur une **architecture microservices** permettant une meilleure scalabilité, maintenance et isolation des différentes fonctionnalités.
 
-## **Commandes principales**
+### 🛠️ Stack technique
 
-### **1. Construire l'image Docker**
-Pour créer l'image Docker à partir du fichier `Dockerfile`, utilisez la commande suivante :
+- **Frontend**: HTML/CSS/JavaScript avec Bootstrap et Three.js
+- **API Gateway**: Nginx
+- **HTTPS Proxy**: Configuration SSL/TLS pour sécuriser les communications
+- **Microservices**:
+  - **👤 User Management**: Gestion des utilisateurs, authentification et autorisations
+  - **🏆 Event Management**: Gestion des événements et tournois
+  - **💬 Chat Management**: Système de messagerie en temps réel
+- **⚡ Cache**: Redis pour les performances et le partage d'état
+- **🐳 Conteneurisation**: Docker et Docker Compose pour la gestion des environnements
+
+## ✨ Fonctionnalités principales
+
+### 💬 Système de chat en temps réel
+- Communication instantanée entre joueurs
+- Canaux de discussion publics et privés
+- Historique des conversations
+
+### 🕹️ Jeu multijoueur
+- Matchmaking automatique
+- Système de tournoi
+- Classements et statistiques
+- Parties en temps réel
+
+## 🚀 Démarrage
+
+Pour lancer l'application:
 
 ```bash
-docker build -t frontend-app .
+docker-compose up -d
 ```
 
-docker build : Crée une image à partir du Dockerfile.
--t frontend-app : Attribue le tag frontend-app à l'image. Ce nom sera utilisé pour référencer l'image lors de son exécution.
-. : Indique que le contexte de construction est le répertoire actuel (contenant le Dockerfile).
+L'application sera accessible à l'adresse IP du serveur.
 
-### **2. Exécuter le conteneur**
-Pour exécuter l'application dans un conteneur Docker, lancez la commande suivante :
+## ⚙️ Configuration
 
-```bash
-docker run -d -p 8000:8000 frontend-app
-```
+Créez les fichiers `.env` nécessaires dans chaque microservice:
 
-docker run : Lance un nouveau conteneur basé sur une image Docker.
--d : Exécute le conteneur en arrière-plan (mode détaché).
--p 8000:8000 : Configure la redirection des ports entre votre machine hôte et le conteneur :
+### Pour user_managment/.env
+Il est nécessaire de configurer:
+- L'URL et le port du service
+- Les paramètres de connexion à la base de données
+- **API_42_UID** et **API_42_SECRET**: Clés API nécessaires pour l'authentification via 42
 
-    8000 : Port sur votre machine hôte. Vous accéderez à l'application via http://localhost:8000.
-    8000 : Port interne du conteneur où Nginx est configuré pour écouter.
-
-frontend-app : Nom de l'image Docker à utiliser pour ce conteneur.
-
-### **3. Arrêter le conteneur**
-
-Pour arrêter un conteneur en cours d'exécution, utilisez :
-```bash
-docker stop <CONTAINER_ID>
-```
-
-### **4. Supprimer le conteneur**
-Pour supprimer un conteneur arrêté, utilisez :
-```bash
-docker stop <CONTAINER_ID>
-```
+### Pour chat_managment/.env et event_managment/.env
+Configurer les paramètres de connexion aux autres services et bases de données.

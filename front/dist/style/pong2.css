@@ -1,0 +1,143 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Empêche le défilement */
+}
+
+#pongCanvas {
+    position: absolute; /* Assurez-vous qu'il soit absolument positionné */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Couvre toute la largeur de l'écran */
+    height: 50vh; /* Couvre toute la hauteur de l'écran */
+    z-index: -1; /* Au fond */
+    display: block; /* Assurez-vous qu'il est un élément bloc */
+}
+
+
+/* Conteneur global du ScoreBoard */
+#scoreBoard {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    font-family: 'Audiowide', sans-serif;
+    z-index: 1;
+}
+
+/* Bulles de score */
+.score-left,
+.score-right {
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    background: url('../img/galaxy.webp');
+    margin: 0px 35px;
+    background-size: cover;
+    border: 3px solid rgba(255,255,255,0.8);
+    border-radius: 20px;
+    font-size: 35px;
+}
+
+/* Couleurs spécifiques */
+.score-left {
+    color: rgb(202, 27, 27);
+}
+
+.score-right {
+    color: rgb(22, 176, 22);
+}
+
+  #winnerMessage{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: 'Audiowide', sans-serif;
+	font-size: 200px;
+	text-align: center;
+	text-shadow: 0 0 10px #000;
+	padding: 20px 40px;
+	border-radius: 10px;
+	z-index: 10000;
+	display: none; 
+  }
+
+/* Écran de chargement en fond noir */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Toujours au-dessus */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Affichage du loading */
+#loading-screen.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Demi-cercle tournant */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid transparent;
+    border-top: 6px solid cyan; /* Couleur effet néon */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Animation de rotation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Texte "LOADING..." */
+.loading-text {
+    font-family: 'Audiowide', cursive;
+    color: cyan;
+    margin-top: 10px;
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 20px cyan;
+    font-size: 18px;
+}
+
+/* Style spécifique pour la version remote */
+.remote-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Style spécifique pour la version locale */
+.local-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+

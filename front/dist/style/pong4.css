@@ -1,0 +1,268 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Empêche le défilement */
+}
+
+/* #pongCanvas::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 6px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); 
+} */
+
+.split-line {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 5px; /* Bordure plus épaisse */
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 100; /* S'assurer qu'elle est au-dessus du canvas */
+    transform: translateX(-50%);
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+#pongCanvas {
+    position: absolute; /* Assurez-vous qu'il soit absolument positionné */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Couvre toute la largeur de l'écran */
+    height: 100vh; /* Couvre toute la hauteur de l'écran */
+    z-index: -1; /* Au fond */
+    display: block; /* Assurez-vous qu'il est un élément bloc */
+}
+
+#scoreBoard {
+    position: fixed;
+    top: 80px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    z-index: 2;
+}
+
+/* .score-left1, .score-left3 {
+    margin-top: 150px;
+    margin-left: 20px;
+}
+
+.score-right2, .score-right4 {
+    margin-top: 150px;
+    margin-right: 20px;
+} */
+
+.score-left1,
+.score-right2,
+.score-left3,
+.score-right4 {
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    background: url('../img/galaxy.webp');
+    margin: 0px 35px;
+    background-size: cover;
+    border: 3px solid rgba(255,255,255,0.8);
+    border-radius: 20px;
+    font-size: 35px;
+}
+
+/* Couleurs spécifiques */
+.score-left1 {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start; /* Optionnel si vous voulez vraiment coller à gauche */
+    color: rgb(202, 27, 27);
+}
+
+.score-right2 {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;   /* Optionnel si vous voulez coller à droite */
+    color: rgb(22, 176, 22);
+  }
+  
+  /* Pilote 3 en colonne 1, ligne 2 */
+  .score-left3 {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    color: rgb(144, 86, 209);
+  }
+  
+  /* Pilote 4 en colonne 2, ligne 2 */
+  .score-right4 {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    color: rgb(32, 112, 218);
+  }
+  
+  /* On fait en sorte que les conteneurs internes ne créent pas d'interruption dans la grille */
+  #scoreBoard .player,
+  #scoreBoard .score {
+	display: contents;
+  }
+  
+  /* Le premier élément (Joueur 1 et son score) est placé dans la première colonne */
+  #scoreBoard .player .player-name:nth-of-type(1),
+  #scoreBoard .score .player-score:nth-of-type(1) {
+	grid-column: 1;
+	justify-self: start;
+  }
+  
+  /* Le deuxième élément (Joueur 2 et son score) est placé dans la deuxième colonne */
+  #scoreBoard .player .player-name:nth-of-type(2),
+  #scoreBoard .score .player-score:nth-of-type(2) {
+	grid-column: 2;
+	justify-self: end;
+  }
+
+  #winnerMessage{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: 'Audiowide', sans-serif;
+	font-size: 200px;
+	text-align: center;
+	text-shadow: 0 0 10px #000;
+	padding: 20px 40px;
+	border-radius: 10px;
+	z-index: 10000;
+	display: none; 
+  }
+  
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Empêche le défilement */
+}
+
+/* Écran de chargement en fond noir */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Toujours au-dessus */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Affichage du loading */
+#loading-screen.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Demi-cercle tournant */
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid transparent;
+    border-top: 6px solid cyan; /* Couleur effet néon */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Animation de rotation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Texte "LOADING..." */
+.loading-text {
+    font-family: 'Audiowide', cursive;
+    color: cyan;
+    margin-top: 10px;
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 20px cyan;
+    font-size: 18px;
+}
+
+/* Style spécifique pour la version remote */
+.remote-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#player1 {
+    color: blue; 
+}
+
+#player2 {
+    color: red;
+} 
+
+/* #spacer { */
+    /* display: inline-block; Séparation entre Joueur 1 et Joueur 2 */
+    /* width: 300px; Ajuster pour plus ou moins d'espace */
+/* }  */
+
+/* Canvas adapté à la taille de l'écran (mobile, tablette) */
+@media (max-width: 768px) {
+    #pongCanvas {
+        width: 100vw; /* Prend toute la largeur de l'écran */
+        height: 100vh; /* Prend toute la hauteur de l'écran */
+    }
+
+    /* Si vous voulez ajuster la caméra ou d'autres éléments, faites-le ici */
+    body {
+        height: 100vh;
+        overflow: hidden; /* Empêche le défilement */
+    }
+
+    #scoreBoard {
+        font-size: 30px; /* Réduit la taille de la police pour les petits écrans */
+        user-select: none;
+    }
+}
+
+/* Pour les petits écrans mobiles (moins de 600px) */
+@media (max-width: 600px) {
+    #pongCanvas {
+        width: 100vw; /* Toujours toute la largeur */
+        height: 100vh; /* Toujours toute la hauteur */
+    }
+
+    #scoreBoard {
+        font-size: 25px; /* Taille encore plus petite pour les très petits écrans */
+    }
+
+    /* D'autres ajustements spécifiques à la version mobile */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+

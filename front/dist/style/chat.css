@@ -1,0 +1,313 @@
+/* =========================
+   Variables de couleurs
+   ========================= */
+   :root {
+    --background-dark: rgba(0, 0, 0, 0.8);
+    --background-light: rgba(0, 0, 0, 0.6);
+    --accent-color: cyan;
+    --text-color: cyan;
+    --muted-color: cyan;
+  }
+  
+  /* =========================
+     Réglages globaux
+     ========================= */
+body.chat-page {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #000 !important;
+    color: cyan;
+    box-sizing: border-box;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+  /* =========================
+     Container principal
+     ========================= */
+  .chat-container {
+    display: flex;
+    width: 100%;
+    height: 75vh;
+    /* margin-bottom: 20px !important; */
+  }
+  
+  /* =========================
+     Sidebar (colonne gauche)
+     ========================= */
+  .chat-sidebar {
+    /* Ajustez la largeur selon vos besoins */
+    width: 30%;
+    max-width: 400px;
+  
+    background-color: var(--background-dark);
+    padding: 20px;
+    overflow-y: auto; /* défilement si la liste est longue */
+    border-right: 1px solid cyan;
+    user-select: none;
+  }
+  
+  .sidebar-header {
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 2px solid cyan;
+    outline: none;
+    background-color: var(--background-light);
+    color: cyan;
+  }
+  
+  .search-results {
+    margin-top: 10px;
+    background-color: var(--background-light);
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    color: cyan;
+  }
+
+  .conversations-message {
+    padding: 1px;
+    color: cyan;
+    opacity: 0.6;
+    user-select: none;
+    font-family: 'Audiowide', cursive;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    list-style-type: none;  /* Supprime le point de la liste */
+}
+
+@media (max-width: 768px) {
+  .conversations-message {
+      font-size: 0.8em;
+      letter-spacing: 0.8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .conversations-message {
+      font-size: 0.7em;
+      letter-spacing: 0.6px;
+  }
+}
+
+  .conversation-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    /* border-bottom: 1px solid cyan; */
+    cursor: pointer;
+    transition: background 0.3s;
+    user-select: none;
+  }
+  
+  .conversation-list li:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+  
+  .no-conversations {
+    text-align: center;
+    padding: 20px;
+    color: cyan;
+  }
+  
+  /* =========================
+     Zone principale (colonne droite)
+     ========================= */
+  .chat-main {
+    /* Le flex: 1 permet à cette zone de prendre tout l'espace restant
+       en largeur */
+    flex: 1;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-light);
+  }
+  
+  /* En-tête de conversation */
+  .conversation-header {
+    flex: 0 0 auto; /* reste à la hauteur de son contenu */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: var(--background-dark);
+    border-bottom: 1px solid cyan;
+    user-select: none;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: cyan;
+    cursor: pointer;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin-left: 10px;
+    user-select: none;
+  }
+  
+  .user-info .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+  
+  .user-info h5 {
+    margin: 0;
+    font-size: 1.1em;
+    color: cyan;
+  }
+  
+  /* Actions utilisateur (ex: profil) */
+  .user-actions button {
+    background: none;
+    border: none;
+    color: cyan;
+    cursor: pointer;
+    font-size: 1.2em;
+  }
+  
+  /* =========================
+     Zone de messages
+     ========================= */
+  .message-container {
+    /* flex: 1 => occupe l'espace vertical restant entre l'en-tête et la zone d'envoi */
+    flex: 1;
+    overflow-y: auto;
+    background-color: var(--background-dark);
+    padding: 20px;
+  }
+  
+  /* Messages */
+  .message-wrapper {
+    margin-bottom: 15px;
+    display: flex;
+  }
+  
+  .message-wrapper.own-message {
+    justify-content: flex-end;
+  }
+  
+  .message-wrapper.other-message {
+    justify-content: flex-start;
+  }
+  
+  .message {
+    max-width: 50%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    line-height: 1.4;
+    word-wrap: break-word;       /* Ajoute des retours à la ligne pour les longs mots */
+    overflow-wrap: break-word;   /* Support supplémentaire pour les navigateurs */
+    white-space: pre-wrap;       /* Préserve les espaces et retours à la ligne */
+    hyphens: auto;              /* Ajoute des tirets si nécessaire */
+  }
+  
+  .own-message .message,
+  .other-message .message {
+    border: 2px solid cyan !important;   
+    background-color: black !important; 
+    color: cyan !important;
+    border-radius: 20px !important;
+    padding: 10px 15px !important;
+    line-height: 1.4 !important;
+    max-width: 40% !important;   /* Limite la largeur maximale */
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: pre-wrap !important;
+    hyphens: auto !important;
+  }
+  
+  /* Ajuster la zone de message pour le mode mobile */
+  @media (max-width: 768px) {
+    .message,
+    .own-message .message,
+    .other-message .message {
+        max-width: 55%;  /* Augmenter légèrement la largeur sur mobile */
+    }
+  }
+  
+  /* =========================
+     Zone d'envoi de message
+     ========================= */
+  .chat-input {
+    flex: 0 0 auto;
+    display: flex;
+    padding: 20px;
+    background-color: var(--background-dark);
+    border-top: 1px solid cyan;
+  }
+  
+  .message-input {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: var(--background-light);
+    color: cyan;
+    min-height: 40px;
+  }
+  
+  .send-button {
+    margin-left: 10px;
+    padding: 15px 20px;
+    border: 2px solid cyan;
+    border-radius: 20px;
+    background-color: black;
+    color: cyan;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .send-button:hover {
+    background-color: cyan;
+    color: black;
+  }
+  
+  /* =========================
+     Scrollbars
+     ========================= */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--background-dark);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+  }
+
+
+  .game-invite-message {
+    background-color: #28a745 !important; /* Green background for invites */
+    color: white !important;
+    text-align: center;
+    font-weight: bold;
+}
+
+.game-invite-message:hover {
+    background-color: #218838 !important; /* Darker green on hover */
+}
+
+.game-invite-container {
+    padding: 0; /* Remove default padding when making the entire message clickable */
+}

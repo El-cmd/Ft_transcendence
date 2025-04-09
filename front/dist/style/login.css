@@ -1,0 +1,104 @@
+/* 🔹 Style du fond flouté */
+.modal::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(25px); /* Applique un flou */
+    background: rgba(0, 0, 0, 0.6); /* Assombrit légèrement */
+    z-index: -1;
+}
+
+/* centrage "Connexion" */
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    user-select: none;
+}
+
+/* 🔹 Centrage parfait de la modal */
+.modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Centre la fenêtre sur toute la hauteur */
+    user-select: none;
+}
+
+/* 🔹 Style de la boîte de connexion */
+.modal-content {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid cyan;
+    box-shadow: 0px 0px 20px cyan;
+    text-align: center;
+}
+
+/* 🔹 Effet néon sur le titre */
+.modal-title {
+    font-family: 'Audiowide', cursive;
+    color: cyan;
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 20px cyan;
+}
+
+/* 🔹 Champs de saisie */
+.form-control {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid cyan;
+    color: cyan;
+}
+
+.form-control:focus {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-color: cyan;
+    box-shadow: 0 0 10px cyan;
+}
+
+/* 🔹 Style des boutons */
+.btn-tron {
+    background: cyan;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Audiowide', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-tron:hover {
+    background: #00cccc;
+    box-shadow: 0 0 15px cyan;
+}
+
+/* 🔹 Bouton secondaire */
+.btn-tron-secondary {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid cyan;
+    color: cyan;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Audiowide', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-tron-secondary:hover {
+    background: cyan;
+    color: black;
+    box-shadow: 0 0 15px cyan;
+}
+
+/* 🔹 Style du lien d'inscription */
+.modal-body a {
+    color: cyan;
+    text-decoration: none;
+}
+
+.modal-body a:hover {
+    text-shadow: 0 0 10px cyan;
+}
+

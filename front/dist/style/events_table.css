@@ -1,0 +1,25 @@
+#eventTableContainer {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+#eventTable {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    font-family: 'Audiowide';
+}
+
+#eventTable th, #eventTable td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: center;
+}
+
+#eventTable th {
+    background-color: #333;
+}
+
+#eventTable td {
+    background-color: #222;
+}

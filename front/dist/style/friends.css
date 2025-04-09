@@ -1,0 +1,12 @@
+#friendsList {
+    background-color: #1e1e1e;
+    padding: 15px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Audiowide';
+}
+
+#friendsList p {
+    margin: 10px 0;
+}

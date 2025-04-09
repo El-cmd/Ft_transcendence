@@ -1,0 +1,14 @@
+/* Le conteneur principal qui contient tout le contenu dynamique */
+#main-content {
+    flex: 1;
+    overflow-y: auto; /* Permet de scroller si besoin */
+    padding: 20px;
+    min-height: calc(100vh - 100px); /* Ajuster selon la taille du header/footer */
+}
+
+/* Pour éviter que le footer cache du contenu sur des écrans plus petits */
+@media (max-height: 600px) {
+    #main-content {
+        min-height: calc(100vh - 120px);
+    }
+}

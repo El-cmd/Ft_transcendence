@@ -1,0 +1,40 @@
+/* Réinitialisation générale */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  /* Assurer que html et body occupent toute la hauteur de la fenêtre */
+  html, body {
+	height: 100%;
+	font-family: sans-serif;
+  }
+  
+  /* Le conteneur principal prend toute la hauteur, avec un padding en bas
+	 pour laisser de l'espace au footer */
+  #content {
+	min-height: 100%;
+	padding-bottom: 60px; /* Espace réservé au footer */
+  }
+  
+  /* Le canvas occupe toute la largeur et sa hauteur est calculée
+	 pour occuper l'espace restant (hauteur de la fenêtre - hauteur du footer) */
+  #pongCanvas {
+	display: block;
+	width: 100%;
+	height: calc(100vh - 60px);
+  }
+  
+  /* Footer fixé en bas de la page */
+  footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;            /* Hauteur du footer */
+	text-align: center;
+	line-height: 60px;       /* Pour centrer verticalement le texte */
+	z-index: 1000;
+  }
+  

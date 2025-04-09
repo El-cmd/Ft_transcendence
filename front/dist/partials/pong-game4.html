@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Pong Game TRON Style</title>
+  <link rel="stylesheet" href="/style/pong4.css">
+</head>
+<body>
+  <!-- Écran de chargement -->
+  <div id="loading-screen">
+      <div class="spinner"></div>
+      <p class="loading-text">LOADING...</p>
+  </div>
+
+  <img src="/img/tron3.jpeg" alt="tron" class="remote-background" id="bg-image">
+  <!-- Vidéo de fond -->
+  <!-- <video autoplay loop muted playsinline class="video-background" id="bg-video">
+      <source src="https://videos.pexels.com/video-files/11354070/11354070-uhd_2560_1440_60fps.mp4" type="video/mp4">
+  </video> -->
+
+  <!-- ScoreBoard : Joueur 1 à gauche, Joueur 2 à droite -->
+  <div id="scoreBoard">
+        <div class="score-left1">
+            <div class="score-content-left1">
+                <!-- <span class="player-name"></span> -->
+                <span id="player1-score" class="player-score">0</span>
+            </div>
+        </div>
+        <div class="score-right2">
+            <div class="score-content-right2">
+                <!-- <span class="player-name"></span> -->
+                <span id="player2-score" class="player-score">0</span>
+            </div>
+        </div>
+        <div class="score-left3">
+            <div class="score-content-left3">
+                <!-- <span class="player-name"></span> -->
+                <span id="player3-score" class="player-score">0</span>
+            </div>
+        </div>
+        <div class="score-right4">
+            <div class="score-content-right4">
+                <!-- <span class="player-name"></span> -->
+                <span id="player4-score" class="player-score">0</span>
+            </div>
+        </div>
+  </div>
+
+  <div id="winnerMessage"></div>
+
+  <section id="pong-game4">
+      <canvas id="pongCanvas"></canvas>
+      <!-- <div class="split-line"></div> -->
+      <script type="module" src="pong4.js"></script>
+  </section>
+</body>
+</html>

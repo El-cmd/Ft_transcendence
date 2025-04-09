@@ -1,0 +1,43 @@
+<body class="chat-page">
+  <section id="chat" class="chat-container">
+    <!-- Sidebar : liste des conversations et barre de recherche -->
+    <div class="chat-sidebar">
+      <div class="sidebar-header">
+        <input type="text" id="userSearchInput" class="search-input" placeholder="Rechercher des utilisateurs..." maxlength="20">
+        <div id="searchResults" class="search-results"></div>
+      </div>
+      <ul id="chat-conversations" class="conversations-message">
+      </ul>
+    </div>
+
+  
+    <!-- Zone principale : conversation active -->
+    <div class="chat-main">
+      <header id="conversation-header" class="conversation-header">
+        <button id="back-button" class="back-button"><i class="bi bi-arrow-left"></i></button>
+        <div class="user-info">
+          <img id="chat-user-avatar" class="avatar" src="/img/user-2-svgrepo-com.svg" alt="Avatar">
+          <h5 id="chat-user-name"></h5> 
+        </div> 
+        <div id="user-actions" class="user-actions">
+          <!-- Boutons d'actions (ex : view profile) -->
+          <button type="button" class="btn btn-outline-secondary" data-action="view-profile">
+            <i class="bi bi-person"></i>
+          </button>
+        </div>
+      </header>
+  
+      <div id="chat-messages" class="message-container">
+        <!-- Fil de messages chargé dynamiquement -->
+      </div>
+  
+      <form id="chat-form" class="chat-input">
+        <div class="d-flex flex-column w-100">
+          <input type="text" id="chat-input-field" class="message-input" placeholder="Tapez votre message..." maxlength="2000" required>
+          <div id="message-warning" class="form-text text-danger mb-2" style="display: none; font-size: 12px;"></div>
+        </div>
+        <button type="submit" class="send-button"><i class="bi bi-send"></i> Envoyer</button>
+      </form>
+    </div>
+  </section>
+</body>

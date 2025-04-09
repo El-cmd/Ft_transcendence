@@ -1,0 +1,69 @@
+/* Form container */
+#create_event_form {
+    overflow-y: auto;
+    max-height: 400px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1a1f36;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Form elements */
+#eventCreateForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#eventCreateForm label {
+    color: white;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#eventCreateForm input[type="text"],
+#eventCreateForm input[type="number"],
+#eventCreateForm textarea,
+#eventCreateForm select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #2a2f48;
+    color: white;
+}
+
+#eventCreateForm input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#eventCreateForm button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#eventCreateForm button:hover {
+    background-color: #0056b3;
+}
+
+/* Adjustments for the form elements */
+#eventCreateForm select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="none" stroke="white" stroke-width="1" d="M2 0 L0 2 L4 2 Z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+#eventCreateForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
